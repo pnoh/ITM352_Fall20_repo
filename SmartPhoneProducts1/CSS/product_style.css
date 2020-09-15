@@ -1,11 +1,8 @@
 body {
     width: 800px; 
     margin: 0 auto;
-    background-image: url("Images/phone_globe.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 800px;
-
+    background-image: url(../Images/phone_globe.jpg);
+    background: no-repeat center;
 }
 
 img {
@@ -27,11 +24,9 @@ div {
     border: 5px solid black;
     display: flex;
 }
-
 header {
     text-align: center;
 }
-
 footer {
     text-align: center;
 }
