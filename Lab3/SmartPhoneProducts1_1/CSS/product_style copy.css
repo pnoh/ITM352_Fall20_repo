@@ -1,0 +1,48 @@
+body {
+    width: 800px; 
+    margin: 0 auto;
+    background-image: url(../Images/phone_globe.jpg);
+    background: no-repeat center;
+}
+
+.item img {
+    width:200px;
+    height:200px;
+}
+
+p {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+div {
+    border: 5px solid black;
+    display: flex;
+}
+header {
+    text-align: center;
+}
+footer {
+    text-align: center;
+}
+
+.rotate img
+{
+  animation: rotation .3s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
