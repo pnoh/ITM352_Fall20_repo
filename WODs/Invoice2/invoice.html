@@ -45,8 +45,20 @@ var subtotal = extended_price1 + extended_price2 + extended_price3 + extended_pr
 var tax_rate = 0.0575;
 var tax = tax_rate*subtotal;
 
+//calculate shipping cost
+
+if(subtotal <= 50) {
+ shipping = 2;
+}
+else if(subtotal <= 100) {
+  shipping = 5;
+}
+else {
+  shipping = 0.05*subtotal
+}
+
 //Grand Total
-var total = tax + subtotal;
+var total = tax + subtotal + shipping;
 
 </script>
 
@@ -120,7 +132,7 @@ var total = tax + subtotal;
           </tr>
           <tr>
             <td style="text-align: center;" colspan="3" width="67%">Sub-total</td>
-            <td width="54%">$<script>document.write(subtotal);</script></td>
+            <td width="54%">$<script>document.write(subtotal.toFixed(2));</script></td>
           </tr>
           <tr>
             <td style="text-align: center;" colspan="3" width="67%">
@@ -129,11 +141,18 @@ var total = tax + subtotal;
             <td width="54%">$<script>document.write(tax.toFixed(2));</script></td>
           </tr>
           <tr>
+            <td style="text-align: center;" colspan="3" width="67%">
+              <span style="font-family: arial;">Shipping</span></td>
+            <td width="54%">$<script>document.write(shipping.toFixed(2));</script></td>
+          </tr>
+          <tr>
             <td style="text-align: center;" colspan="3" width="67%"><strong>Total</strong></td>
             <td width="54%"><strong>$<script>document.write(total.toFixed(2));</script></strong></td>
           </tr>
         </tbody>
       </table>
-      
+  <p style="font-weight: bold;">OUR SHIPPING POLICY IS:A subtotal $0 - $49.99 will be $2 shipping
+    A subtotal $50 - $99.99 will be $5 shipping
+    Subtotals over $100 will be charged 5% of the subtotal amount</p>
 </body>
 </html>
