@@ -1,0 +1,92 @@
+<script>
+    // Product data from product_data json (7 bread items)
+    var products =
+        [
+            {
+                "name": "Sourdough Loaf",
+                "price": 6.00,
+                "image": 'sour_dough.jpg'
+            },
+            {
+                "name": "Hokkaido Milk Bread Loaf",
+                "price": 6.00,
+                "image": 'milk_bread.jpg'
+            },
+            {
+                "name": "Muffaletta Sourdough Loaf",
+                "price": 8.00,
+                "image": 'muffaletta_sourdough.png'
+            },
+            {
+                "name": "Sundried Tomato and Parmesan Sourdough Loaf",
+                "price": 8.00,
+                "image": 'Sundried.jpg'
+            },
+            {
+                "name": "Chocolate Babka Loaf",
+                "price": 6.00,
+                "image": 'ChocoBabka.jpg'
+            },
+            {
+                "name": "Cinnamon Babka Loaf",
+                "price": 6.00,
+                "image": 'CinnamonBabka.jpg'
+            },
+            {
+                "name": "Vegan Hokkaido Milk Bread Loaf",
+                "price": 7.00,
+                "image": 'vegan.jpg'
+            },
+        ];
+
+
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="product_style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noh Dough Homemade Baked Goods</title>
+</head>
+
+<body>
+        <header>
+            <h1>Noh Dough Cottage Bakery</h1>
+        </header>
+        <div>
+            <form action="./process_form" method="POST"> 
+            <main>
+
+                <script>
+                    for (i = 0; i < products.length; i++) {
+
+                        document.write(`
+                        
+    <section class="item"> 
+        <h2>${products[i].name}</h2>
+        <p>$${products[i].price}</p>
+        <label>Quantity</label> 
+        <input type="text" placeholder="0" name="quantity${i}");"> 
+        <img src="./images/${products[i].image}"">
+        </section>
+                `);
+                    }
+                
+                </script>
+
+
+            </main>  
+            <input type="submit" value="Purchase!">
+        </form>
+        </div>
+        <footer>
+          
+            <h1>Homemade Bread just for You!</h1>
+        </footer>
+</body>
+
+</html>
