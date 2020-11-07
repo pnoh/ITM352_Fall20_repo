@@ -63,9 +63,17 @@
 <link rel="stylesheet" href="product_style.css">
 <style>
 body {font-family: "Times New Roman", Georgia, Serif; background-color: beige;}
-h1, h2, h3, h4, h5, h6 {
+h1 {
   font-family: "Times New Roman";
   letter-spacing: 3px;
+}
+h2 {
+    font-family: "Times New Roman";
+  letter-spacing: 3px;
+}
+h3 {
+    font-family: "Times New Roman";
+  letter-spacing: 1px;
 }
 </style>
 <body>
@@ -83,8 +91,8 @@ h1, h2, h3, h4, h5, h6 {
             for (i = 0; i < products.length; i++) {
                 document.write(`
                         <section class="item">
-                            <h2>${products[i].name}</h2>                            
-                            <p>$${products[i].price}</p>
+                            <h2>${products[i].name}</h2>                       
+                            <h3><p>Cost:$${products[i].price}</p></h3>
                             <br><img src="./images/${products[i].image}">
                             <label id="quantity${i}_label"}">Quantity</label>
                             <input type="text" placeholder="0" name="quantity${i}" 
