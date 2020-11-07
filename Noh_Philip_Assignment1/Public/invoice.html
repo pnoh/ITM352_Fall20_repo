@@ -1,40 +1,22 @@
+<script 
+src="./product_data.js" type="text/javascript"> 
+</script> 
 <script>
-  // Product quantities
-  var quantities = ["zero", -3, 5.3, 7, 9];
+  //Used assignment1 examples and Invoice WODs as a reference to copy code
+        let params = (new URL(document.location)).searchParams;
+        var quantities = [];
+        if (params.has('submitPurchase')) { 
+          for (i = 0; i < products.length; i++) {
+            if (params.has(`quantity${i}`)) {
+              a_qty = params.get(`quantity${i}`);
+              quantities[i] = a_qty;
+            }
+          }
 
-  // Subtotal
-  var subtotal = 0;
-
-  // Function to generate row items
-  function generate_item_rows(product_quantities_array) {
-    for (i = 0; i < product_quantities_array.length; i++) {
-      errors = isNonNegInt(product_quantities_array[i], true);
-
-      if (errors.length == 0) {
-        var extended_price = quantities[i] * products[i].price;
-        subtotal += extended_price;
-      }
-
-
-
-      document.write(`
-          <tr>
-            <td width="43%">${products[i].name}</td>
-            <td align="center" width="11%">${product_quantities_array[i]}</td>
-            <td width="13%">$${products[i].price}</td>
-            <td width="54%">$${extended_price}</td>
-          </tr>
-          `);
-    }
-  }
-
-  function isNonNegInt(val, returnErrors) {
-    errors = []; // assume no errors at first
-    if (Number(val) != val) errors.push('Not a number!'); // Check if string is a number value
-    if (val < 0) errors.push('Negative value!'); // Check if it is non-negative
-    if (parseInt(val) != val) errors.push('Not an integer!'); // Check that it is an integer
-    return returnErrors ? errors : ((errors.length > 0) ? false : true);
-  }
+        } else {
+          document.write('Please enter a valid quantity!');
+        }
+        console.log(quantities);
 
 </script>
 
@@ -109,7 +91,6 @@
   <b>OUR SHIPPING POLICY IS:A subtotal $0 - $49.99 will be $2 shipping<br>
     A subtotal $50 - $99.99 will be $5 shipping<br>
     Subtotals over $100 will be charged 5% of the subtotal amount</b>
-</body>
 </body>
 
 </html>
