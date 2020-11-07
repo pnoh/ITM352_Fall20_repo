@@ -1,35 +1,4 @@
 <script>
-  // Products array
-  var products = [
-
-    // Product objects
-    {
-      "name": "Sourdough Loaf",
-      "price": 6.00,
-      "image": 'sour_dough.jpg'
-    },
-    {
-      "name": "Hokkaido Milk Bread Loaf",
-      "price": 6.00,
-      "image": 'milk_bread.jpg'
-    },
-    {
-      "name": "Muffaletta Sourdough Loaf",
-      "price": 8.00,
-      "image": 'muffaletta_sourdough.png'
-    },
-    {
-      "name": "Sundried Tomato and Parmesan Sourdough Loaf",
-      "price": 8.00,
-      "image": 'Sundried.jpg'
-    },
-    {
-      "name": "Chocolate Babka Loaf",
-      "price": 6.00,
-      "image": 'ChocoBabka.jpg'
-    }
-  ];
-
   // Product quantities
   var quantities = ["zero", -3, 5.3, 7, 9];
 
@@ -46,14 +15,7 @@
         subtotal += extended_price;
       }
 
-      if (product_quantities_array[i] == 0) {
-        continue;
-      }
 
-      else {
-        product_quantities_array[i] = `${product_quantities_array[i]}<br><font color="red">${errors}</font>`;
-        extended_price = 0;
-      }
 
       document.write(`
           <tr>

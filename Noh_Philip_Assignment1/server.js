@@ -45,9 +45,4 @@ app.all('*', function (request, response, next) {
     next();
 });
 
-app.post("/process_form", function (request, response) {
-    let POST = request.body;
-    process_quantity_form(POST, response);
-});
-
 app.listen(8080, () => console.log(`listening on port 8080`));
