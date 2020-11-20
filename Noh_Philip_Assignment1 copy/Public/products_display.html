@@ -1,0 +1,112 @@
+<!--This display page code is based on WODs and Assignment1 examples-->
+
+<script src="/product_data.js" type="text/javascript"> //connects the products array to the display page</script>
+<script>
+    /*The following functions are primarily from the Assignment1 example and using some of the 
+    page source code in one of the Assignment1 images*/
+    function isNonNegInt(q, return_errors = false) {
+        errors = []; // This means there are no erros
+        if (q == '') q = 0; // Means that if the quantity is left blank it = 0
+        if (Number(q) != q) errors.push('<font color="red">Not a number!</font>'); // Checks if it is a string and not a number
+        else if (q < 0) errors.push('<font color="red">Negative value!</font>'); // Checks if the number is non-negative, if it is negative it gives the response
+        else if (parseInt(q) != q) errors.push('<font color="red">Not an integer!</font>'); // Checks if the value is an integer 
+        return return_errors ? errors : (errors.length == 0);
+    }
+    //function to create the textboxes for the quantities 
+    function checkQuantityTextbox(theTextbox) {
+        errs = isNonNegInt(theTextbox.value, true); //checks if the value is non-negative again 
+        if (errs.length == 0) errs = ['You want:']; //when inputting a value, the text says "you want"
+        if (theTextbox.value.trim() == '') errs = ['Quantity'];
+        document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", ");
+    }
+    window.onload = function () {
+        let params = (new URL(document.location)).searchParams; // casts for the query string for form data (later in this diplay page code)
+        // when a form gets submitted the following code checks that quantities are valid then prints the invoice once it is confirmed to be valid
+        if (params.has('submitPurchase')) {
+            has_errors = false; 
+            total_qty = 0; 
+            //For the products array, show the name of the product, image, and price//
+            for (i = 0; i < products.length; i++) {
+                if (params.has(`quantity${i}`)) {
+                    a_qty = params.get(`quantity${i}`);
+                    // make textboxes sticky in case of invalid data
+                    product_form[`quantity${i}`].value = a_qty;
+                    total_qty += a_qty;
+                    if (!isNonNegInt(a_qty)) {
+                        has_errors = true;
+                        checkQuantityTextbox(product_form[`quantity${i}`]); // tells where the error is from 
+                    }
+                }
+            }
+            // Now respond to errors or sends to the invoice
+            if (has_errors) {
+                alert("Please enter only valid quantities!");
+            } else if (total_qty == 0) { //general alert//
+                alert("Please select some quantities!");
+            } else { // all good//
+                window.location = `./invoice.html${document.location.search}`; //Redirects itself//
+                window.stop;
+            }
+        }
+    }
+</script>
+
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<title>Noh Dough Cottage Bakery</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="product_style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif; background-color: beige;}
+h1 {
+  font-family: "Times New Roman";
+  letter-spacing: 3px;
+}
+h2 {
+    font-family: "Times New Roman";
+  letter-spacing: 3px;
+}
+h3 {
+    font-family: "Times New Roman";
+  letter-spacing: 1px;
+}
+</style>
+<body>
+    <div>
+<!-- This is the form that allows the display to POST to the server and print the invoice -->
+<form name="products_display" action="/process_quantity_form" method="POST">
+
+
+
+<header>
+    <h1>Noh Dough Cottage Bakery</h1>
+</header>        
+<!-- This code was mainly from the SmartPhoneProducts WODs and assignment1 screencasts and examples -->
+        <script>
+            for (i = 0; i < products.length; i++) {
+                document.write(`
+                        <section class="item">
+                            <h2>${products[i].name}</h2>                       
+                            <h3><p>Cost:$${products[i].price}</p></h3>
+                            <br><img src="./images/${products[i].image}">
+                            <label id="quantity${i}_label"}">Quantity</label>
+                            <input type="text" placeholder="0" name="quantity${i}" 
+                            onkeyup="checkQuantityTextbox(this);">
+        
+                        </section>
+                    `);
+            }    
+        </script>
+
+<footer>
+</footer>
+<input type="submit" value="Purchase!" name= "submitPurchase">
+</form>
+</div>
+</body>
+</html>
