@@ -1,0 +1,87 @@
+<!-- This code is largely from w3 Schools and lab 14 -->
+<html lang="en">
+
+    <head>
+        <script>
+            let params = (new URL(document.location)).searchParams;
+    
+            window.onload = function () { 
+                //if there are errors it says it is invalid
+                if (params.has('errors')) {
+    
+                    console.log("invalid");
+                    alert('Fix the following errors: \n' + params.get('errors'));
+                }
+            }    
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Registration Page</title>
+        <link rel="stylesheet" href="product_style.css"> 
+        <style>
+            /* Styling */
+            header, body, form, input {
+                font-family: "Times New Roman";
+                letter-spacing: 3px;
+            }
+            header{
+                text-align: center;
+                font-size: 50px;
+                margin-bottom: 30px;
+            }
+            body {
+                background-color: beige;
+            }
+            form{
+        text-align: center;
+    }
+         /* referenced from w3schools to format the textboxes*/ 
+    input[type=text], input[type=password], input[type=email] {
+            text-align: center;
+            font-size: 15px;
+            width: 60%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            
+        }
+    
+    input[type=submit] {
+            font-size: 40px;
+            color:black;
+            border: none;
+            margin-top: 25px;
+        }
+
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            Register to buy bread!
+        </header>
+        <div>
+            <!-- code from w3 schools -->
+            <form method="POST" action="process_register" name="Register">
+                <input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+"
+                    placeholder="Enter First & Last Name"><br /> 
+                <input type="text" name="username" size="40" pattern=".[a-z0-9]{3,10}" required
+                    title="Minimum 4 Characters, Maximum 10 Characters, Numbers/Letters Only"
+                    placeholder="Enter Username"><br /> 
+                <input type="email" name="email" size="40" placeholder="Enter Email"  
+                    pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{3,}$" required title="Please enter valid email."><br /> 
+                <input type="password" id="password" name="password" size="40" pattern=".{8,}" required
+                    title="8 Characters Minimum" placeholder="Enter Password"><br />
+                <input type="password" id="repeat_password" name="repeat_password" size="40" pattern=".{8,}" required
+                    title="8 Characters Minimum" placeholder="Repeat Password"><br />
+    
+                <input type="submit" value="Register" id="submit">
+            </form>
+            <script>
+                Register.action += document.location.search; //this will save the query string from products
+            </script>
+        </div>
+    </body>
+    
+    </html>
