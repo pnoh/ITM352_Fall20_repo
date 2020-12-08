@@ -15,11 +15,14 @@ src="./product_data.js" type="text/javascript">
           }
 
         } else {
-          document.write('Please enter a valid quantity!');
+          window.location.href = './products_display.html';
         }
-        console.log(quantities);
+        if (params.has('username')) {
+          var name = params.get('name');
+          var username = params.get('username');
+        }
+      </script>  
 
-</script>
 
 <!DOCTYPE html>
 <html lang="en">

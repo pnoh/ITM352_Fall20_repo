@@ -5,12 +5,12 @@
 var express = require('express');
 var app = express();
 var myParser = require("body-parser");
-var data = require('./public/product_data.js');
+var data = require('./Public/product_data.js');
 var products = data.products;
 var fs = require('fs');
 const queryString = require('query-string');
 
-app.use(express.static('./public'));
+app.use(express.static('./Public'));
 app.use(myParser.urlencoded({ extended: true }));
 
 app.post("/process_quantity_form", function (request, response) {
