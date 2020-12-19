@@ -1,0 +1,96 @@
+<!-- This code is mostly from w3 schools -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script>
+        let params = (new URL(document.location)).searchParams;
+
+        window.onload = function () { //Create alert for invalid usernames/passwords
+            if (params.has('LogError')) {
+                alert('Invalid Username or Passowrd');
+            }
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="product_style.css"> 
+   <style>
+        /* styling */
+       header, body, form, input, .login, .register {
+            font-family: "Times New Roman";
+            letter-spacing: 3px;
+        }
+        header{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        body {
+            background-color: beige;
+            text-align: center;
+            font-size: 20px;
+        }
+        form{
+    text-align: center;
+}
+input[type=text], input[type=password], input[type=email] {
+        text-align: center;
+        font-size: 10px;
+        width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+        
+    }
+    input[type=submit] {
+        font-weight: bold;
+        font-size: 70px;
+        color:black;
+        margin-top: 25px; 
+    }
+
+    .register {
+        background-color: beige;
+    }
+    .login {
+        background-color: beige;
+    }
+    </style>
+   
+</head>
+
+<body> 
+
+    <h1>Noh Dough Login</h1>
+    <p>To order bread<br> please enter your login information or register</p>
+    <form name="login" action="process_login" method="POST">
+        <div class="container"><br>
+            <input type="text" name="username" id="username" size="40" placeholder="Enter Username" required><br>
+            <input type="password" name="password" size="40" placeholder="Enter Password" onkeyup="" required><br> 
+            
+            <input type="submit" value="Login" name="login" class = "login" style= "font-size: 20px;"> 
+            
+            
+        </div>
+    </form>
+    <script>
+        
+       login.action += document.location.search; // this makes sure the information is not lost after the index page 
+    </script>
+</body>
+
+
+<h2>Register Here!</h2> 
+
+<body>
+
+    <input type="button" name="newuser" value="New User"
+        onclick="window.location='./register.html' + document.location.search;" class = 'register'> 
+
+
+</body>
+
+</html>

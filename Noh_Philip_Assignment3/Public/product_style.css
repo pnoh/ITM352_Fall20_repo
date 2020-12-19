@@ -1,0 +1,44 @@
+body {
+    width: 600px; 
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:800px;
+
+}
+
+img {
+    width:150px;
+    height:150px;
+}
+
+h2 {
+    background-color: rgb(137, 206, 228);
+}
+
+p {
+    text-align: center;
+    text-align: justify;
+    border: 2px solid black;
+    
+}
+
+main {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+div {
+    border: 5px solid black;
+    display: flex;
+}
+
+header {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
